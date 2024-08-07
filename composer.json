@@ -1,0 +1,51 @@
+{
+    "name": "bangaping27/component-counter",
+    "description": "A Laravel package to count routes, controllers, views, models, migrations, and seeders.",
+    "homepage": "https://github.com/bangaping27/component-counter",
+    "keywords": [
+        "laravel",
+        "component-counter",
+        "count",
+        "routes",
+        "controllers",
+        "views",
+        "models",
+        "migrations",
+        "seeders"
+    ],
+    "support": {
+        "issues": "https://github.com/bangaping27/component-counter/issues",
+        "source": "https://github.com/bangaping27/component-counter"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.org/packages/bangaping27/component-counter"
+        }
+    ],
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Bangaping27\\ComponentCounter\\": "src/"
+        }
+    },
+    "require": {
+        "laravel/framework": "^8.0|^9.0|^10.0|^11.0|^12.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bangaping27\\ComponentCounter\\ComponentCounterServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafli Anggoro",
+            "email": "mail@raflianggoro.com"
+        }
+    ]
+}
