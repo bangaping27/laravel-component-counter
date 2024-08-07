@@ -3,7 +3,6 @@
 namespace Bangaping27\ComponentCounter;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Http;
 
 class ComponentCounterServiceProvider extends ServiceProvider
 {
@@ -54,9 +53,12 @@ class ComponentCounterServiceProvider extends ServiceProvider
             ],
         ];
         $context  = stream_context_create($options);
-        $response = file_get_contents($url, false, $context);
+        $response = @file_get_contents($url, false, $context);
 
-        if ($response !== FALSE) {
+        if ($response === FALSE) {
+            // Handle the error if the request failed
+            $this->error('Failed to contact the API. Please check the URL and try again.');
+        } else {
             $this->saveApiResponse(json_decode($response, true));
         }
     }
