@@ -19,11 +19,11 @@ class CountComponents extends Command
         $migrationPath = database_path('migrations');
         $seederPath = database_path('seeders');
 
-        $totalControllers = count(File::allFiles($controllerPath));
-        $totalViews = count(File::allFiles($viewPath));
-        $totalModels = count(File::allFiles($modelPath));
-        $totalMigrations = count(File::allFiles($migrationPath));
-        $totalSeeders = count(File::allFiles($seederPath));
+        $totalControllers = $this->countFiles($controllerPath);
+        $totalViews = $this->countFiles($viewPath);
+        $totalModels = $this->countFiles($modelPath);
+        $totalMigrations = $this->countFiles($migrationPath);
+        $totalSeeders = $this->countFiles($seederPath);
         $totalRoutes = count(Route::getRoutes());
 
         $this->line('============================================');
@@ -40,5 +40,16 @@ class CountComponents extends Command
         $this->line('============================================');
 
         return 0;
+    }
+
+    /**
+     * Count the number of files in a directory.
+     *
+     * @param string $path
+     * @return int
+     */
+    protected function countFiles($path)
+    {
+        return is_dir($path) ? count(File::allFiles($path)) : 0;
     }
 }
